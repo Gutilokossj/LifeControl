@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    devIndicators: {
+      autoPrerender: false,
+    },
+    serverRuntimeConfig: {},
+    publicRuntimeConfig: {},
+  };
 
 module.exports = nextConfig;
