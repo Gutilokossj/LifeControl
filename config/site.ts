@@ -2,7 +2,7 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "Tasks App",
-  description: "LALALA.",
+  description: "Site para controle de vida e suas tarefas!",
   navItems: [
     {
       label: "Home",
