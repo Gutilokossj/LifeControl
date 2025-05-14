@@ -15,6 +15,7 @@ interface EditTasksProps {
 export function EditTasks({ isOpen, onClose, onSave, task }: EditTasksProps) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [titleError, setTitleError] = useState("");
 
   useEffect(() => {
     if (task) {
@@ -25,6 +26,13 @@ export function EditTasks({ isOpen, onClose, onSave, task }: EditTasksProps) {
 
   function handleSave() {
     if (!task) return;
+
+    if (!title.trim()) {
+      setTitleError("O título é obrigatório.");
+      return;
+    }
+
+    setTitleError("");
 
     onSave({
       ...task,
@@ -44,7 +52,12 @@ export function EditTasks({ isOpen, onClose, onSave, task }: EditTasksProps) {
             label="Título"
             labelPlacement="inside"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => {
+              setTitle(e.target.value);
+              if (titleError) setTitleError(""); // limpa erro enquanto digita
+            }}
+            isInvalid={!!titleError}
+            errorMessage={titleError}
           />
           <Input
             label="Descrição"

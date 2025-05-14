@@ -23,6 +23,8 @@ interface CreateTasksProps {
 export function CreateTasks({ isOpen, onClose, onSave, task }: CreateTasksProps) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [titleError, setTitleError] = useState("");
+
 
   useEffect(() => {
     if (task) {
@@ -35,7 +37,12 @@ export function CreateTasks({ isOpen, onClose, onSave, task }: CreateTasksProps)
   }, [task, isOpen]);
 
   function handleSave() {
-    if (!title.trim()) return;
+    if (!title.trim()) {
+      setTitleError("O título é obrigatório.");
+      return;
+    }
+
+    setTitleError("");
 
     const newTask: Task = {
       id: task ? task.id : Math.random(),
@@ -57,13 +64,18 @@ export function CreateTasks({ isOpen, onClose, onSave, task }: CreateTasksProps)
         </ModalHeader>
         <ModalBody>
           <Input
-            label="Título"
+            label="Título (obrigatório)"
             labelPlacement="inside"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => {
+              setTitle(e.target.value);
+              if (titleError) setTitleError(""); // limpa erro enquanto digita
+            }}
+            isInvalid={!!titleError}
+            errorMessage={titleError}
           />
           <Input
-            label="Descrição"
+            label="Descrição (opcional)"
             labelPlacement="inside"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
