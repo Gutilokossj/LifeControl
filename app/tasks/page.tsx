@@ -129,13 +129,13 @@ export default function TasksPage() {
               .map((task) => (
                 <Card
                   key={task.id}
-                  className="min-h-32 hover:translate-x-1 duration-300"
+                  className="min-h-32 overflow-y-auto hover:translate-x-1 duration-300"
                 >
                   <CardBody className="dark: bg-blue-200 dark:text-black dark:bg-blue-300 relative select-none">
                     <div>
                       <div className="flex flex-col">
                       </div>
-                      <p className="text-zinc-800 text-lg font-bold">{task.title}</p>
+                      <p className="text-zinc-800 text-lg font-bold w-full">{task.title}</p>
                       {task.description && task.description.trim() !== "" && (
                         <div className="flex flex-col mt-2">
                           <p className="text-zinc-600 text-lg font-semibold">Descrição:</p>
