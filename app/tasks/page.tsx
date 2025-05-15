@@ -44,6 +44,7 @@ export default function TasksPage() {
   }, []);
 
   function handleAddTask(task: Omit<Tasks, "id" | "status">) {
+    
     const newTask: Tasks = {
       ...task,
       id: Date.now(),
@@ -114,7 +115,7 @@ export default function TasksPage() {
 
   return (
     <div>
-      <h1 className="flex font-bold text-5xl justify-center mb-5">Tarefas</h1>
+      <h1 className="flex font-bold text-5xl justify-center mb-5 select-none">Tarefas Semanais</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
@@ -122,7 +123,7 @@ export default function TasksPage() {
             Em andamento
             <IoHourglassOutline />
           </h2>
-          <div className="flex relative border-2 hover:border-blue-500 hover:brightness-100 duration-300 bg-zinc-900 gap-4 rounded-md flex-col h-[400px] p-6 overflow-y-auto">
+          <div className="flex relative border-2 hover:border-blue-500 hover:brightness-100 duration-300 gap-4 rounded-md flex-col h-[400px] p-6 overflow-y-auto">
             {tasks
               .filter((task) => !task.status)
               .map((task) => (
@@ -138,12 +139,12 @@ export default function TasksPage() {
                         </p>
                       </div>
                       <p>{task.title}</p>
-                      <div className="flex flex-col">
-                        <p className="text-zinc-600 text-lg font-semibold">
-                          Descrição:
-                        </p>
-                      </div>
-                      <p className="w-4/5">{task.description}</p>
+                      {task.description && task.description.trim() !== "" && (
+                        <div className="flex flex-col mt-2">
+                          <p className="text-zinc-600 text-lg font-semibold">Descrição:</p>
+                          <p className="w-4/5">{task.description}</p>
+                        </div>
+                      )}
                     </div>
                     <div className="absolute top-2 right-2">
                       <Dropdown className="min-w-fit">
@@ -207,12 +208,12 @@ export default function TasksPage() {
                         </p>
                       </div>
                       <p>{task.title}</p>
-                      <div className="flex flex-col">
-                        <p className="text-zinc-600 text-lg font-semibold">
-                          Descrição:
-                        </p>
-                      </div>
-                      <p className="w-4/5">{task.description}</p>
+                      {task.description && task.description.trim() !== "" && (
+                        <div className="flex flex-col mt-2">
+                          <p className="text-zinc-600 text-lg font-semibold">Descrição:</p>
+                          <p className="w-4/5">{task.description}</p>
+                        </div>
+                      )}
                     </div>
                     <div className="absolute top-2 right-2">
                       <Dropdown className="min-w-fit">
