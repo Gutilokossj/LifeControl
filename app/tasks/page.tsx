@@ -115,12 +115,12 @@ export default function TasksPage() {
 
   return (
     <div>
-      <h1 className="flex font-bold text-5xl justify-center mb-5 select-none">Tarefas Semanais</h1>
+      <h1 className="flex font-bold text-5xl justify-center mb-5 select-none">Tarefas</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <h2 className="justify-center text-2xl font-semibold flex items-center gap-2 mb-3">
-            Em andamento
+            Pendentes
             <IoHourglassOutline />
           </h2>
           <div className="flex relative border-2 hover:border-blue-500 hover:brightness-100 duration-300 gap-4 rounded-md flex-col h-[400px] p-6 overflow-y-auto">
@@ -134,11 +134,8 @@ export default function TasksPage() {
                   <CardBody className="dark: bg-blue-200 dark:text-black dark:bg-blue-300 relative select-none">
                     <div>
                       <div className="flex flex-col">
-                        <p className="text-zinc-600 text-lg font-semibold">
-                          Título:
-                        </p>
                       </div>
-                      <p>{task.title}</p>
+                      <p className="text-zinc-800 text-lg font-bold">{task.title}</p>
                       {task.description && task.description.trim() !== "" && (
                         <div className="flex flex-col mt-2">
                           <p className="text-zinc-600 text-lg font-semibold">Descrição:</p>
@@ -203,11 +200,8 @@ export default function TasksPage() {
                   <CardBody className="dark: bg-green-200 dark:text-black dark:bg-green-300 relative select-none">
                     <div>
                       <div className="flex flex-col">
-                        <p className="text-zinc-600 text-lg font-semibold">
-                          Título:
-                        </p>
                       </div>
-                      <p>{task.title}</p>
+                      <p className="text-zinc-800 text-lg font-bold">{task.title}</p>
                       {task.description && task.description.trim() !== "" && (
                         <div className="flex flex-col mt-2">
                           <p className="text-zinc-600 text-lg font-semibold">Descrição:</p>
