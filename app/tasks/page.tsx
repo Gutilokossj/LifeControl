@@ -68,7 +68,7 @@ export default function TasksPage() {
     const newTasks = tasks.filter((task) => task.id !== id);
 
     setTasks(newTasks);
-     localStorage.setItem("tasks", JSON.stringify(newTasks));
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
 
   function handleEditTask(updatedTask: Tasks) {
@@ -77,6 +77,7 @@ export default function TasksPage() {
     );
 
     setTasks(newTasks);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
 
   function handleOpenEditModal(task: Tasks) {
