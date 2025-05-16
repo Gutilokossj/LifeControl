@@ -211,7 +211,7 @@ export default function TasksPage() {
                   key={task.id}
                   className="min-h-32 hover:translate-x-1 duration-300"
                 >
-                  <CardBody className="dark: bg-green-200 dark:text-black dark:bg-green-300 relative select-none">
+                  <CardBody className="dark: bg-green-200 dark:text-black dark:bg-green-300 relative select-none cursor-pointer" onClick={() => handleOpenViewModal(task)}>
                     <div>
                       <div className="flex flex-col">
                       </div>
