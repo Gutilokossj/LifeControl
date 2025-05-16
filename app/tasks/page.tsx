@@ -23,6 +23,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 
 import { CreateTasks } from "@/components/modal/createTasks";
 import { EditTasks } from "@/components/modal/editTasks";
+import { ViewTasks } from "@/components/modal/viewTasks";
 
 interface Tasks {
   id: number;
@@ -44,7 +45,7 @@ export default function TasksPage() {
   }, []);
 
   function handleAddTask(task: Omit<Tasks, "id" | "status">) {
-    
+
     const newTask: Tasks = {
       ...task,
       id: Date.now(),
@@ -62,7 +63,7 @@ export default function TasksPage() {
     );
 
     setTasks(updatedTasks);
-     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
 
   function handleDelete(id: number) {
@@ -92,6 +93,18 @@ export default function TasksPage() {
     onOpen: onOpenEdit,
     onClose: onCloseEdit,
   } = useDisclosure();
+
+  const [taskBeingViewed, setTaskBeingViewed] = useState<Tasks | null>(null);
+  const {
+    isOpen: isViewOpen,
+    onOpen: onOpenView,
+    onClose: onCloseView,
+  } = useDisclosure();
+
+  function handleOpenViewModal(task: Tasks) {
+    setTaskBeingViewed(task);
+    onOpenView();
+  }
 
   useEffect(() => {
     const handleLoadTasks = () => {
@@ -131,11 +144,12 @@ export default function TasksPage() {
                   key={task.id}
                   className="min-h-32 overflow-y-auto hover:translate-x-1 duration-300"
                 >
-                  <CardBody className="dark: bg-blue-200 dark:text-black dark:bg-blue-300 relative select-none">
+                  <CardBody className="dark: bg-blue-200 dark:text-black dark:bg-blue-300 relative select-none cursor-pointer" onClick={() => handleOpenViewModal(task)}>
                     <div>
                       <div className="flex flex-col">
                       </div>
-                      <p className="text-zinc-800 text-lg font-bold w-full">{task.title}</p>
+                      <p className="text-zinc-800 text-lg font-bold w-full">{task.title}
+                      </p>
                       {task.description && task.description.trim() !== "" && (
                         <div className="flex flex-col mt-2">
                           <p className="text-zinc-600 text-lg font-semibold">Descrição:</p>
@@ -201,7 +215,7 @@ export default function TasksPage() {
                     <div>
                       <div className="flex flex-col">
                       </div>
-                      <p className="text-zinc-800 text-lg font-bold">{task.title}</p>
+                      <p className="text-zinc-800 text-lg font-bold w-full">{task.title}</p>
                       {task.description && task.description.trim() !== "" && (
                         <div className="flex flex-col mt-2">
                           <p className="text-zinc-600 text-lg font-semibold">Descrição:</p>
@@ -266,6 +280,11 @@ export default function TasksPage() {
         task={taskBeingEdited}
         onClose={onCloseEdit}
         onSave={handleEditTask}
+      />
+      <ViewTasks
+        isOpen={isViewOpen}
+        onClose={onCloseView}
+        task={taskBeingViewed}
       />
     </div>
   );
