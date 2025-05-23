@@ -45,7 +45,6 @@ export default function TasksPage() {
   }, []);
 
   function handleAddTask(task: Omit<Tasks, "id" | "status">) {
-
     const newTask: Tasks = {
       ...task,
       id: Date.now(),
@@ -128,7 +127,9 @@ export default function TasksPage() {
 
   return (
     <div>
-      <h1 className="flex font-bold text-5xl justify-center mb-5 select-none">Tarefas</h1>
+      <h1 className="flex font-bold text-5xl justify-center mb-5 select-none">
+        Tarefas
+      </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
@@ -144,15 +145,20 @@ export default function TasksPage() {
                   key={task.id}
                   className="min-h-32 overflow-y-auto hover:translate-x-1 duration-300"
                 >
-                  <CardBody className="dark: bg-blue-200 dark:text-black dark:bg-blue-300 relative select-none cursor-pointer" onClick={() => handleOpenViewModal(task)}>
+                  <CardBody
+                    className="dark: bg-blue-200 dark:text-black dark:bg-blue-300 relative select-none cursor-pointer"
+                    onClick={() => handleOpenViewModal(task)}
+                  >
                     <div>
-                      <div className="flex flex-col">
-                      </div>
-                      <p className="text-zinc-800 text-lg font-bold w-full">{task.title}
+                      <div className="flex flex-col"></div>
+                      <p className="text-zinc-800 text-lg font-bold w-full">
+                        {task.title}
                       </p>
                       {task.description && task.description.trim() !== "" && (
                         <div className="flex flex-col mt-2">
-                          <p className="text-zinc-600 text-lg font-semibold">Descrição:</p>
+                          <p className="text-zinc-600 text-lg font-semibold">
+                            Descrição:
+                          </p>
                           <p className="w-4/5">{task.description}</p>
                         </div>
                       )}
@@ -168,17 +174,12 @@ export default function TasksPage() {
                             className="w-8 flex justify-center"
                             onClick={() => handleConcluded(task.id)}
                           >
-                            <Tooltip color="success" content="Concluir Tarefa!" placement="left">
+                            <Tooltip
+                              color="success"
+                              content="Concluir Tarefa!"
+                              placement="left"
+                            >
                               <FaCheck className="text-green-500" />
-                            </Tooltip>
-                          </DropdownItem>
-                          <DropdownItem
-                            key="delete"
-                            className="w-8 flex justify-center"
-                            onClick={() => handleDelete(task.id)}
-                          >
-                            <Tooltip color="danger" content="Deletar Tarefa!" placement="left">
-                              <FaTrash className="text-red-500" />
                             </Tooltip>
                           </DropdownItem>
                           <DropdownItem
@@ -186,8 +187,25 @@ export default function TasksPage() {
                             className="w-8 flex justify-center"
                             onClick={() => handleOpenEditModal(task)}
                           >
-                            <Tooltip color="primary" content="Editar Tarefa!" placement="left">
+                            <Tooltip
+                              color="primary"
+                              content="Editar Tarefa!"
+                              placement="left"
+                            >
                               <FaPencilAlt className="text-blue-500" />
+                            </Tooltip>
+                          </DropdownItem>
+                          <DropdownItem
+                            key="delete"
+                            className="w-8 flex justify-center"
+                            onClick={() => handleDelete(task.id)}
+                          >
+                            <Tooltip
+                              color="danger"
+                              content="Deletar Tarefa!"
+                              placement="left"
+                            >
+                              <FaTrash className="text-red-500" />
                             </Tooltip>
                           </DropdownItem>
                         </DropdownMenu>
@@ -211,14 +229,20 @@ export default function TasksPage() {
                   key={task.id}
                   className="min-h-32 hover:translate-x-1 duration-300"
                 >
-                  <CardBody className="dark: bg-green-200 dark:text-black dark:bg-green-300 relative select-none cursor-pointer" onClick={() => handleOpenViewModal(task)}>
+                  <CardBody
+                    className="dark: bg-green-200 dark:text-black dark:bg-green-300 relative select-none cursor-pointer"
+                    onClick={() => handleOpenViewModal(task)}
+                  >
                     <div>
-                      <div className="flex flex-col">
-                      </div>
-                      <p className="text-zinc-800 text-lg font-bold w-full">{task.title}</p>
+                      <div className="flex flex-col"></div>
+                      <p className="text-zinc-800 text-lg font-bold w-full">
+                        {task.title}
+                      </p>
                       {task.description && task.description.trim() !== "" && (
                         <div className="flex flex-col mt-2">
-                          <p className="text-zinc-600 text-lg font-semibold">Descrição:</p>
+                          <p className="text-zinc-600 text-lg font-semibold">
+                            Descrição:
+                          </p>
                           <p className="w-4/5">{task.description}</p>
                         </div>
                       )}
@@ -234,17 +258,12 @@ export default function TasksPage() {
                             className="w-8 flex justify-center"
                             onClick={() => handleConcluded(task.id)}
                           >
-                            <Tooltip color="warning" content="Voltar tarefa!" placement="left">
+                            <Tooltip
+                              color="warning"
+                              content="Voltar tarefa!"
+                              placement="left"
+                            >
                               <IoMdArrowRoundBack className="text-yellow-500" />
-                            </Tooltip>
-                          </DropdownItem>
-                          <DropdownItem
-                            key="delete"
-                            className="w-8 flex justify-center"
-                            onClick={() => handleDelete(task.id)}
-                          >
-                            <Tooltip color="danger" content="Deletar Tarefa!" placement="left">
-                              <FaTrash className="text-red-500" />
                             </Tooltip>
                           </DropdownItem>
                           <DropdownItem
@@ -252,8 +271,25 @@ export default function TasksPage() {
                             className="w-8 flex justify-center"
                             onClick={() => handleOpenEditModal(task)}
                           >
-                            <Tooltip color="primary" content="Editar Tarefa!" placement="left">
+                            <Tooltip
+                              color="primary"
+                              content="Editar Tarefa!"
+                              placement="left"
+                            >
                               <FaPencilAlt className="text-blue-500" />
+                            </Tooltip>
+                          </DropdownItem>
+                          <DropdownItem
+                            key="delete"
+                            className="w-8 flex justify-center"
+                            onClick={() => handleDelete(task.id)}
+                          >
+                            <Tooltip
+                              color="danger"
+                              content="Deletar Tarefa!"
+                              placement="left"
+                            >
+                              <FaTrash className="text-red-500" />
                             </Tooltip>
                           </DropdownItem>
                         </DropdownMenu>
