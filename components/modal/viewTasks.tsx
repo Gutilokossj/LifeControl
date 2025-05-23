@@ -19,13 +19,13 @@ export function ViewTasks({ isOpen, onClose, task }: ViewTasksProps) {
         <ModalBody>
           <div className="flex flex-col gap-4">
             <div>
-              <p className="text-sm font-semibold text-zinc-600">Título</p>
-              <p className="text-lg font-bold text-zinc-800 break-words whitespace-pre-line">{task.title}</p>
+              <p className="text-sm font-semibold text-zinc-600 dark:text-zinc-100">Título</p>
+              <p className="text-lg font-bold text-zinc-800 dark:text-zinc-400 break-words whitespace-pre-line">{task.title}</p>
             </div>
             {task.description && (
               <div>
-                <p className="text-sm font-semibold text-zinc-600">Descrição</p>
-                <p className="text-base text-zinc-700 break-words whitespace-pre-line">{task.description}</p>
+                <p className="text-sm font-semibold text-zinc-600 dark:text-zinc-100">Descrição</p>
+                <p className="text-base text-zinc-800 dark:text-zinc-400 break-words whitespace-pre-line">{task.description}</p>
               </div>
             )}
           </div>
