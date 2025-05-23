@@ -5,11 +5,11 @@ export const siteConfig = {
   description: "Site para controle de vida e suas tarefas!",
   navItems: [
     {
-      label: "Home",
+      label: "Dashboard",
       href: "/",
     },
     {
-      label: "Tasks",
+      label: "Tarefas",
       href: "/tasks",
     },
   ],
